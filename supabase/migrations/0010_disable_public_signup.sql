@@ -1,0 +1,10 @@
+-- Admin-controlled users only: disable self-service sign-up in Supabase Auth.
+--
+-- In the Supabase Dashboard go to:
+--   Authentication → Providers → Email → turn OFF "Enable sign ups"
+--
+-- New users must be created by an administrator, e.g. via SQL (see 0002_test_user.sql,
+-- 0003_admin_user.sql) or Dashboard → Authentication → Users → Add user.
+--
+-- The login page no longer exposes registration. Magic links use shouldCreateUser: false
+-- so unknown e-mails cannot create accounts from the app.

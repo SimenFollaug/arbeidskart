@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arbeidskart – offline</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        background: #f1f5f9;
+        color: #0f172a;
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .card {
+        max-width: 22rem;
+        background: #fff;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      }
+      h1 { font-size: 1.25rem; margin: 0 0 0.75rem; }
+      p { margin: 0; color: #475569; line-height: 1.5; font-size: 0.95rem; }
+      button {
+        margin-top: 1.25rem;
+        border: none;
+        background: #2563eb;
+        color: #fff;
+        border-radius: 0.5rem;
+        padding: 0.65rem 1.25rem;
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Du er offline</h1>
+      <p>
+        Nettverket er utilgjengelig. Tidligere besøkte sider kan fortsatt fungere
+        når du får dekning igjen.
+      </p>
+      <button onclick="location.reload()">Prøv igjen</button>
+    </div>
+  </body>
+</html>

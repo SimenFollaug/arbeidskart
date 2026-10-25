@@ -1,0 +1,151 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Leaflet map must fill its container. */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  background: #dbe3ea;
+  font-family: inherit;
+}
+
+@media (max-width: 767px) {
+  .leaflet-bottom.leaflet-right {
+    bottom: 4.75rem;
+    max-width: calc(100vw - 1.5rem);
+  }
+}
+
+/* Custom comment marker pin. */
+.arb-marker {
+  width: 26px;
+  height: 26px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Kategori-ikoner (tre, I, person) – innhold roteres tilbake. */
+.arb-marker--icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arb-marker__glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  color: #ffffff;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.arb-marker__glyph--info {
+  font-size: 15px;
+  font-weight: 800;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #2563eb;
+}
+
+.arb-marker--info {
+  border-color: #2563eb;
+}
+
+.arb-marker.is-important {
+  animation: arb-pulse 1.6s ease-out infinite;
+}
+
+@keyframes arb-pulse {
+  0% {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(220, 38, 38, 0.5);
+  }
+  70% {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4), 0 0 0 10px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px;
+}
+
+/* Markør for slettet kommentar (vises som eget kartlag). */
+.del-marker {
+  width: 22px;
+  height: 22px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: #94a3b8;
+  border: 2px dashed #ffffff;
+  opacity: 0.9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* "Din posisjon"-markør (geolokasjon). */
+.user-loc {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 3px solid white;
+  box-shadow:
+    0 0 0 2px rgba(37, 99, 235, 0.4),
+    0 1px 4px rgba(0, 0, 0, 0.4);
+  animation: user-loc-pulse 1.8s ease-out infinite;
+}
+
+@keyframes user-loc-pulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(37, 99, 235, 0.45),
+      0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+  70% {
+    box-shadow:
+      0 0 0 16px rgba(37, 99, 235, 0),
+      0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(37, 99, 235, 0),
+      0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Strømnett WMS-farger når tjenesten ikke bruker SLD (sorte linjer → farget). */
+.strom-wms-red img {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(7472%)
+    hue-rotate(356deg) brightness(89%) contrast(114%);
+}
+
+.strom-wms-purple img {
+  filter: brightness(0) saturate(100%) invert(24%) sepia(98%) saturate(4798%)
+    hue-rotate(262deg) brightness(96%) contrast(93%);
+}
